@@ -1,3 +1,9 @@
-# starter
+# Starter Template
 
-This is a starter template for flutter projects.
+### a starter template for flutter projects.
+
+## Getting Started
+install dependencies
+ ```
+ flutter pub get
+ ```
