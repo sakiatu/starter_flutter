@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:starter/feature/theme/controller_theme.dart';
 
 import 'const/string.dart';
 import 'const/theme.dart';
 import 'feature/home/page_home.dart';
+import 'helper/init.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // await gdi.init();
+  await init();
   runApp(const MyApp());
 }
 
@@ -16,15 +19,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: MyString.appName,
-      themeMode: ThemeMode.system,
-      // themeMode: dark ? ThemeMode.dark : ThemeMode.light,
-      theme: MyTheme.lightTheme,
-      darkTheme: MyTheme.darkTheme,
-      home: const HomePage(),
-      // home: FirebaseAuth.instance.currentUser != null ? const Homepage() : const PhonePage(),
-    );
+    return GetBuilder<ThemeController>(
+        builder: (controller) => MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: MyString.appName,
+              themeMode: controller.darkMode.value ? ThemeMode.dark : ThemeMode.light,
+              theme: MyTheme.lightTheme,
+              darkTheme: MyTheme.darkTheme,
+              home: const HomePage(),
+              // home: FirebaseAuth.instance.currentUser != null ? const Homepage() : const PhonePage(),
+            ));
   }
 }
