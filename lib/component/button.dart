@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../helper/extension/ext_context.dart';
+import 'loader.dart';
 
 enum _ButtonType { normal, danger }
 
@@ -17,9 +18,9 @@ class MyButton extends FilledButton {
 
   MyButton.danger({super.key, required VoidCallback? onClick, required String title, bool loading = false})
       : _type = _ButtonType.danger,
-        super(child: loading ? _loader() : Text(title), onPressed: loading ? null : onClick);
+        super(child: loading ? _loader(true) : Text(title), onPressed: loading ? null : onClick);
 
-  static Widget _loader() => const SizedBox(height: 24, width: 24, child: CircularProgressIndicator(strokeWidth: 2));
+  static Widget _loader([bool danger = false]) => Loader(size: 24, stroke: 2.5,danger: danger);
 
   @override
   ButtonStyle defaultStyleOf(BuildContext context) {
