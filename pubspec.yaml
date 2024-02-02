@@ -18,6 +18,8 @@ dependencies:
   jwt_decoder: ^2.0.1
   get: ^4.6.6
   firebase_auth: ^4.17.0
+  material_symbols_icons: ^4.2718.0
+  firebase_core: ^2.25.2
 
 dev_dependencies:
   flutter_test:

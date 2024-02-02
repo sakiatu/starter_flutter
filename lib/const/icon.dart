@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 class MyIcon {
   MyIcon._();
-  static const light = Icons.light_mode;
-  static const dark = Icons.dark_mode;
+  //dark mode
+  static const light = Symbols.light_mode;
+  static const dark = Symbols.dark_mode;
 
 
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter/const/size.dart';
+import '../../const/size.dart';
 
 extension WidgetExtension on Widget {
   Widget center() => Center(child: this);

@@ -20,14 +20,34 @@ install dependencies
  flutter pub get
  ```
 
+firebase setup 
+>Firebase CLI need to be installed
+ 
+>Create a project in [firebase console](https://console.firebase.google.com/)
+ 
+ ```
+  firebase login
+ ```
+ ```
+  dart pub global activate flutterfire_cli
+ ```
+ ```
+  flutterfire configure (use Windows PowerShell)
+ ```
+ 
+ > [Full documentation](https://firebase.google.com/docs/flutter/setup?platform=android)
+ 
+
 change app name
  ```
  where: lib/const/string.dart
  how: appName= 'MyAppName'
- 
+ ```
+ ``` 
  where: android/app/src/main/AndroidManifest.xml
  how: android:label= 'MyAppName'
- 
+ ``` 
+ ``` 
  where: iOS/Runner/info.plist
  how: <key>CFBundleName</key> <string>MyAppName</string>
  

@@ -1,13 +1,13 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalDb {
-  static final LocalDb _instance = LocalDb._internal();
+  static final LocalDb _ld = LocalDb._();
 
-  factory LocalDb() => _instance;
+  factory LocalDb() => _ld;
 
-  LocalDb._internal();
+  LocalDb._();
 
-  late SharedPreferences _db;
+  late final SharedPreferences _db;
 
   Future<void> init() async => _db = await SharedPreferences.getInstance();
 
@@ -16,20 +16,24 @@ class LocalDb {
   static const _userId = "userId";
   static const _darkMode = "darkMode";
 
+  //getter
   String? get token => _db.getString(_token);
 
   String? get userId => _db.getString(_userId);
 
   bool get darkMode => _db.getBool(_darkMode)?? false;
 
+  //setter
   Future<void> saveToken(String? value) async => _save(_token, value);
 
   Future<void> saveUserId(String? value) async => await _save(_userId, value);
 
   Future<void> saveDarkMode(bool? value) async => await _save(_darkMode, value);
 
+  //clear
   Future<void> clearAll() async => await _db.clear();
 
+  //helper
   Future<void> _save(String key, Object? value) async {
     if (value == null) {
       await _db.remove(key);
