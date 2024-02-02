@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../const/size.dart';
 
 extension WidgetExtension on Widget {
@@ -15,13 +16,11 @@ extension WidgetExtension on Widget {
   Widget paddingLTRB({double l = 0, double t = 0, double r = 0, double b = 0}) =>
       Padding(padding: EdgeInsets.only(left: l, top: t, right: r, bottom: b), child: this);
 
-  Widget padding([double n = Gap.regular]) => paddingLTRB(l:n,t: n,r: n,b: n);
+  Widget paddingY([double y = Gap.regular]) => paddingLTRB(t: y, b: y);
 
-  Widget paddingVertical([double v = 0]) => paddingLTRB(t: v, b: v);
+  Widget paddingX([double x = Gap.regular]) => paddingLTRB(l: x, r: x);
 
-  Widget paddingHorizontal([double h = 0]) => paddingLTRB(l: h, r: h);
-
-  Widget paddingVH(double v, double h) => paddingLTRB(l: h, t: v, r: h, b: v);
+  Widget paddingXY([double x = Gap.regular, double y = Gap.regular]) => paddingLTRB(l: x, t: y, r: x, b: y);
 
   Widget paddingLeft([double n = Gap.regular]) => paddingLTRB(l: n);
 
