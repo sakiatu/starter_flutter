@@ -21,9 +21,11 @@ install dependencies
  ```
 
 firebase setup 
->Firebase CLI need to be installed
- 
 >Create a project in [firebase console](https://console.firebase.google.com/)
+
+>Firebase CLI need to be installed
+
+>Open terminal in project
  
  ```
   firebase login
@@ -38,6 +40,11 @@ firebase setup
  > [Full documentation](https://firebase.google.com/docs/flutter/setup?platform=android)
  
 
+change app id
+ ```
+ where: android/app/build.gradle -> defaultConfig
+ how: applicationId "com.mydomainname.projectname"
+ ```
 change app name
  ```
  where: lib/const/string.dart
@@ -79,5 +86,5 @@ use local database
 initialization & GetX dependency injection
  ```
  where: lib/helper/init.dart
- how: init, put getx controller and service
+ how: init module, put getx controller and service
  ```
