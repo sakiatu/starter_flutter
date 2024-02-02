@@ -10,17 +10,21 @@ class MyButton extends FilledButton {
 
   MyButton({
     super.key,
-    required VoidCallback? onClick,
     required String title,
+    required VoidCallback? onClick,
     bool loading = false,
   })  : _type = _ButtonType.normal,
         super(child: loading ? _loader() : Text(title), onPressed: loading ? null : onClick);
 
-  MyButton.danger({super.key, required VoidCallback? onClick, required String title, bool loading = false})
-      : _type = _ButtonType.danger,
+  MyButton.danger({
+    super.key,
+    required String title,
+    required VoidCallback? onClick,
+    bool loading = false,
+  })  : _type = _ButtonType.danger,
         super(child: loading ? _loader(true) : Text(title), onPressed: loading ? null : onClick);
 
-  static Widget _loader([bool danger = false]) => Loader(size: 24, stroke: 2.5,danger: danger);
+  static Widget _loader([bool danger = false]) => Loader(size: 24, stroke: 2.5, danger: danger);
 
   @override
   ButtonStyle defaultStyleOf(BuildContext context) {
