@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
               themeMode: controller.darkMode.value ? ThemeMode.dark : ThemeMode.light,
               theme: MyTheme.lightTheme,
               darkTheme: MyTheme.darkTheme,
-              home: const HomePage(),
+              home: HomePage(),
               // home: FirebaseAuth.instance.currentUser != null ? const Homepage() : const PhonePage(),
             ));
   }
