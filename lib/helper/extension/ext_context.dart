@@ -13,12 +13,14 @@ extension ContextExtension on BuildContext {
 
   void hideSnackBar() => ScaffoldMessenger.of(this).hideCurrentSnackBar();
 
-  void showSuccess(String msg) => showSnackBar(msg, Colors.green);
+  void showSuccess(String msg) => showSnackBar(msg, colors.onPrimary, colors.primary);
 
-  void showError(String msg) => showSnackBar(msg, Colors.red);
+  void showError(String msg) => showSnackBar(msg, colors.onError, colors.error);
 
-  void showSnackBar(String msg, Color color) => ScaffoldMessenger.of(this)
-      .showSnackBar(SnackBar(content: Text(msg), backgroundColor: color, duration: const Duration(milliseconds: 2000)));
+  void showSnackBar(String msg, Color text, Color bg) => ScaffoldMessenger.of(this).showSnackBar(SnackBar(
+      content: Text(msg, style: styles.labelLarge?.copyWith(color: text)),
+      backgroundColor: bg,
+      duration: const Duration(milliseconds: 2000)));
 
   void back() => Navigator.of(this).pop();
 

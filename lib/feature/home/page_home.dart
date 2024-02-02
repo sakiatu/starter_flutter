@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../component/button.dart';
 import '../../component/gap_xy.dart';
 import '../../component/loader.dart';
 import '../../helper/extension/ext_context.dart';
 import '../../helper/extension/ext_widget.dart';
-
 import '../theme/controller_theme.dart';
 
 class HomePage extends GetView<ThemeController> {
@@ -28,6 +28,10 @@ class HomePage extends GetView<ThemeController> {
         const GapY(),
         _button(context),
         _buttonDanger(context),
+        _buttonTonal(context),
+        _buttonDangerTonal(context),
+        _buttonText(context),
+        _buttonDangerText(context),
       ]).paddingXY());
 
   Widget _loader() => const Loader().paddingRight();
@@ -41,4 +45,16 @@ class HomePage extends GetView<ThemeController> {
 
   Widget _buttonDanger(BuildContext context) =>
       MyButton.danger(title: 'My Danger Button', onClick: () => context.showError('Clicked!')).paddingBottom();
+
+  Widget _buttonTonal(BuildContext context) =>
+      MyButton.tonal(title: 'My Tonal Button', onClick: () => context.showSuccess('Clicked!')).paddingBottom();
+
+  Widget _buttonDangerTonal(BuildContext context) =>
+      MyButton.dangerTonal(title: 'My Danger Tonal Button', onClick: () => context.showError('Clicked!'))
+          .paddingBottom();
+
+  Widget _buttonText(BuildContext context) =>
+      MyButton.text(title: 'My Text Button', onClick: () => context.showSuccess('Clicked!')).paddingBottom();
+  Widget _buttonDangerText(BuildContext context) =>
+      MyButton.dangerText(title: 'My Text Button', onClick: () => context.showError('Clicked!')).paddingBottom();
 }
