@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 
 class MyFont {
   MyFont._();
+
   static const primary = 'Manrope';
   static const secondary = 'Inter';
 }
 
 class MyTheme {
   MyTheme._();
+
   static const seedBrand = Color(0XFF0087E4);
   static const seedWarning = Color(0xFFF29F05);
   static const seedProxy = Color(0xFFAF7BFF);
@@ -21,7 +23,6 @@ class MyTheme {
       colorScheme: ColorScheme.fromSeed(seedColor: seedBrand),
       textTheme: textTheme,
       iconTheme: iconTheme,
-      inputDecorationTheme: inputDecorationTheme,
       navigationDrawerTheme: navigationDrawerTheme,
       chipTheme: chipTheme,
       appBarTheme: appbarTheme,
@@ -33,38 +34,68 @@ class MyTheme {
       colorScheme: ColorScheme.fromSeed(seedColor: seedBrand, brightness: Brightness.dark),
       textTheme: textTheme,
       iconTheme: iconTheme,
-      inputDecorationTheme: inputDecorationTheme,
       navigationDrawerTheme: navigationDrawerTheme,
       chipTheme: chipTheme,
       appBarTheme: appbarTheme,
       extensions: const [darkCustomColors]);
 
   static get textTheme => const TextTheme(
-      displayLarge: TextStyle(fontSize: 57, fontFamily: MyFont.primary, fontVariations:[FontVariation.weight(600)], height: 1.12),
-      displayMedium: TextStyle(fontSize: 45, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.15),
-      displaySmall: TextStyle(fontSize: 36, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.2),
-      headlineLarge: TextStyle(fontSize: 32, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.25),
-      headlineMedium: TextStyle(fontSize: 28, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.29),
-      headlineSmall: TextStyle(fontSize: 24, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.33),
-      titleLarge: TextStyle(fontSize: 22, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.27),
-      titleMedium: TextStyle(fontSize: 16, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.5),
-      titleSmall: TextStyle(fontSize: 14, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.43),
+      displayLarge: TextStyle(
+          fontSize: 57, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.12),
+      displayMedium: TextStyle(
+          fontSize: 45, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.15),
+      displaySmall:
+          TextStyle(fontSize: 36, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.2),
+      headlineLarge: TextStyle(
+          fontSize: 32, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.25),
+      headlineMedium: TextStyle(
+          fontSize: 28, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.29),
+      headlineSmall: TextStyle(
+          fontSize: 24, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.33),
+      titleLarge: TextStyle(
+          fontSize: 22, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.27),
+      titleMedium:
+          TextStyle(fontSize: 16, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.5),
+      titleSmall: TextStyle(
+          fontSize: 14, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.43),
       bodyLarge: TextStyle(
-          fontSize: 16, fontFamily: MyFont.secondary, fontVariations: [FontVariation.weight(400)], height: 1.5, letterSpacing: 0),
+          fontSize: 16,
+          fontFamily: MyFont.secondary,
+          fontVariations: [FontVariation.weight(400)],
+          height: 1.5,
+          letterSpacing: 0),
       bodyMedium: TextStyle(
-          fontSize: 14, fontFamily: MyFont.secondary, fontVariations: [FontVariation.weight(400)], height: 1.43, letterSpacing: 0),
+          fontSize: 14,
+          fontFamily: MyFont.secondary,
+          fontVariations: [FontVariation.weight(400)],
+          height: 1.43,
+          letterSpacing: 0),
       bodySmall: TextStyle(
-          fontSize: 12, fontFamily: MyFont.secondary, fontVariations: [FontVariation.weight(400)], height: 1.33, letterSpacing: 0),
+          fontSize: 12,
+          fontFamily: MyFont.secondary,
+          fontVariations: [FontVariation.weight(400)],
+          height: 1.33,
+          letterSpacing: 0),
       labelLarge: TextStyle(
-          fontSize: 14, fontFamily: MyFont.secondary, fontVariations: [FontVariation.weight(500)], height: 1.43, letterSpacing: 0),
+          fontSize: 14,
+          fontFamily: MyFont.secondary,
+          fontVariations: [FontVariation.weight(500)],
+          height: 1.43,
+          letterSpacing: 0),
       labelMedium: TextStyle(
-          fontSize: 12, fontFamily: MyFont.secondary, fontVariations: [FontVariation.weight(500)], height: 1.33, letterSpacing: 0),
+          fontSize: 12,
+          fontFamily: MyFont.secondary,
+          fontVariations: [FontVariation.weight(500)],
+          height: 1.33,
+          letterSpacing: 0),
       labelSmall: TextStyle(
-          fontSize: 11, fontFamily: MyFont.secondary, fontVariations: [FontVariation.weight(550)], height: 1.45, letterSpacing: 0));
+          fontSize: 11,
+          fontFamily: MyFont.secondary,
+          fontVariations: [FontVariation.weight(550)],
+          height: 1.45,
+          letterSpacing: 0));
 
   static get iconTheme => const IconThemeData(fill: 0, weight: 400, opticalSize: 24);
-
-  static get inputDecorationTheme => const InputDecorationTheme(border: OutlineInputBorder());
 
   static get navigationDrawerTheme => const NavigationDrawerThemeData(tileHeight: 48);
 

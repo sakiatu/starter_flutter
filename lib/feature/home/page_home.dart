@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:starter/component/text_field.dart';
 
 import '../../component/button.dart';
 import '../../component/gap_xy.dart';
@@ -32,6 +33,7 @@ class HomePage extends GetView<ThemeController> {
         _buttonDangerTonal(context),
         _buttonText(context),
         _buttonDangerText(context),
+        _textField(context),
       ]).paddingXY());
 
   Widget _loader() => const Loader().paddingRight();
@@ -55,6 +57,9 @@ class HomePage extends GetView<ThemeController> {
 
   Widget _buttonText(BuildContext context) =>
       MyButton.text(title: 'My Text Button', onClick: () => context.showSuccess('Clicked!')).paddingBottom();
+
   Widget _buttonDangerText(BuildContext context) =>
       MyButton.dangerText(title: 'My Text Button', onClick: () => context.showError('Clicked!')).paddingBottom();
+
+  Widget _textField(BuildContext context) => MyTextField(hint: "hint text",label: "label text", icon: Icons.podcasts,minLines:1,maxLines: 10).paddingBottom();
 }
