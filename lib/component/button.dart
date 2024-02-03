@@ -15,8 +15,9 @@ class MyButton extends FilledButton {
     IconData? icon,
     required VoidCallback? onClick,
     bool loading = false,
+    bool disable = false,
   })  : _type = _ButtonType.normal,
-        super(child: loading ? _loader() : _foreground(title, icon), onPressed: loading ? null : onClick);
+        super(child: loading ? _loader() : _foreground(title, icon), onPressed: disable || loading ? null : onClick);
 
   MyButton.tonal({
     super.key,
@@ -24,8 +25,10 @@ class MyButton extends FilledButton {
     IconData? icon,
     required VoidCallback? onClick,
     bool loading = false,
+    bool disable = false,
   })  : _type = _ButtonType.tonal,
-        super.tonal(child: loading ? _loader() : _foreground(title, icon), onPressed: loading ? null : onClick);
+        super.tonal(
+            child: loading ? _loader() : _foreground(title, icon), onPressed: disable || loading ? null : onClick);
 
   MyButton.text({
     super.key,
@@ -33,8 +36,10 @@ class MyButton extends FilledButton {
     IconData? icon,
     required VoidCallback? onClick,
     bool loading = false,
+    bool disable = false,
   })  : _type = _ButtonType.text,
-        super.tonal(child: loading ? _loader() : _foreground(title, icon), onPressed: loading ? null : onClick);
+        super.tonal(
+            child: loading ? _loader() : _foreground(title, icon), onPressed: disable || loading ? null : onClick);
 
   MyButton.danger({
     super.key,
@@ -42,8 +47,10 @@ class MyButton extends FilledButton {
     IconData? icon,
     required VoidCallback? onClick,
     bool loading = false,
+    bool disable = false,
   })  : _type = _ButtonType.danger,
-        super(child: loading ? _loader(true) : _foreground(title, icon), onPressed: loading ? null : onClick);
+        super(
+            child: loading ? _loader(true) : _foreground(title, icon), onPressed: disable || loading ? null : onClick);
 
   MyButton.dangerTonal({
     super.key,
@@ -51,8 +58,10 @@ class MyButton extends FilledButton {
     IconData? icon,
     required VoidCallback? onClick,
     bool loading = false,
+    bool disable = false,
   })  : _type = _ButtonType.dangerTonal,
-        super.tonal(child: loading ? _loader(true) : _foreground(title, icon), onPressed: loading ? null : onClick);
+        super.tonal(
+            child: loading ? _loader(true) : _foreground(title, icon), onPressed: disable || loading ? null : onClick);
 
   MyButton.dangerText({
     super.key,
@@ -60,8 +69,10 @@ class MyButton extends FilledButton {
     IconData? icon,
     required VoidCallback? onClick,
     bool loading = false,
+    bool disable = false,
   })  : _type = _ButtonType.dangerText,
-        super.tonal(child: loading ? _loader(true) : _foreground(title, icon), onPressed: loading ? null : onClick);
+        super.tonal(
+            child: loading ? _loader(true) : _foreground(title, icon), onPressed: disable || loading ? null : onClick);
 
   static Widget _loader([bool danger = false]) => Loader(size: 24, stroke: 2.5, danger: danger);
 
