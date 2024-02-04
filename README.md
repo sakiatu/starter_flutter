@@ -44,6 +44,16 @@ change app id
  ```
  where: android/app/build.gradle -> defaultConfig
  how: applicationId "com.mydomainname.projectname"
+ 
+ note: Don't change namespace but if do then do following
+ 
+ android {
+    namespace "com.mydomainname.projectname"
+    ...
+ }
+    
+ change file structure: android/app/main/kotlin/com/mydomainname/projectname
+ MainActivity.kt : package "com.mydomainname.projectname"
  ```
 change app name
  ```
