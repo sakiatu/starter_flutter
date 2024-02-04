@@ -8,8 +8,8 @@ class MyTextField extends TextField {
     Widget? suffix,
     VoidCallback? onClick,
     bool border = true,
+    bool disabled = false,
     super.key,
-    super.enabled,
     super.readOnly,
     super.minLines,
     super.maxLines,
@@ -20,6 +20,7 @@ class MyTextField extends TextField {
     super.keyboardType,
     super.textInputAction,
   }) : super(
+          enabled: !disabled,
           decoration: InputDecoration(
             border: border ? const OutlineInputBorder() : InputBorder.none,
             floatingLabelAlignment: FloatingLabelAlignment.start,
@@ -39,6 +40,4 @@ class MyTextField extends TextField {
         TextInputType.name => TextCapitalization.words,
         _ => TextCapitalization.none
       };
-
-
 }

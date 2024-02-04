@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:starter/component/card.dart';
+import 'package:starter/component/circular_image.dart';
+import 'package:starter/component/text.dart';
 import 'package:starter/component/text_field.dart';
 
 import '../../component/button.dart';
@@ -21,11 +24,16 @@ class HomePage extends GetView<ThemeController> {
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(title: const Text('Home'), actions: actions(context)),
       body: ListView(children: [
-        Row(children: [
+        const GapY(),
+        if(false)
+        Row(mainAxisAlignment:MainAxisAlignment.center,children: [
+          _loader(),
           _loader(),
           _loaderDanger(),
           _customLoader(),
-        ]),
+          _customLoader(),
+          _customLoader(),
+        ]).paddingX(),
         const GapY(),
         _button(context),
         _buttonDanger(context),
@@ -34,7 +42,11 @@ class HomePage extends GetView<ThemeController> {
         _buttonText(context),
         _buttonDangerText(context),
         _textField(context),
-      ]).paddingXY());
+        _card(),
+        _circularImage(),
+
+        const GapY()
+      ]).paddingX());
 
   Widget _loader() => const Loader().paddingRight();
 
@@ -61,5 +73,18 @@ class HomePage extends GetView<ThemeController> {
   Widget _buttonDangerText(BuildContext context) =>
       MyButton.dangerText(title: 'My Text Button', onClick: () => context.showError('Clicked!')).paddingBottom();
 
-  Widget _textField(BuildContext context) => MyTextField(hint: "hint text",label: "label text", icon: Icons.podcasts,minLines:1,maxLines: 10).paddingBottom();
+  Widget _textField(BuildContext context) =>
+      MyTextField(hint: "hint text", label: "label text",disabled: true, icon: Icons.podcasts, minLines: 1, maxLines: 10)
+          .paddingBottom();
+
+  Widget _card() => MyCard(
+          child: const MyText(
+              'Card 1Card 1Card 1Card 1Card 1Card 1Card 1Card ----- 1Card 1Card- 1Card 1Card 1Card 1Card 1Card 1Card 1'))
+      .paddingBottom();
+
+  Widget _circularImage() => const CircularImage(
+        image: 'https://avatars.githubusercontent.com/u/56442940?v=4',
+        radius: 146,
+        preview: true,
+      ).paddingY().paddingBottom();
 }

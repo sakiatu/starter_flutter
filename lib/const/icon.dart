@@ -6,5 +6,7 @@ class MyIcon {
   static const light = Symbols.light_mode;
   static const dark = Symbols.dark_mode;
 
+  //image
+  static const placeholder = Symbols.spa;
 
 }

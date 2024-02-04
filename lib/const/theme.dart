@@ -13,8 +13,8 @@ class MyFont {
 class MyTheme {
   MyTheme._();
 
-  static const seedBrand = Color(0XFF0087E4);
-  static const seedWarning = Color(0xFFF29F05);
+  static const seedBrand = Color(0XFF8E4585);
+  static const seedWarning = Color(0xFFD00030);
   static const seedProxy = Color(0xFFAF7BFF);
 
   static ThemeData get lightTheme => ThemeData(

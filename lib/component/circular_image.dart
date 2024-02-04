@@ -7,7 +7,7 @@ import '../helper/extension/ext_context.dart';
 class CircularImage extends StatelessWidget {
   final String? image;
   final double radius;
-  final double stroke;
+  final double? stroke;
   final Color? strokeColor;
   final BoxFit? fit;
   final IconData? placeholder;
@@ -16,7 +16,7 @@ class CircularImage extends StatelessWidget {
   const CircularImage(
       {super.key,
       this.image,
-      this.stroke = 2,
+      this.stroke,
       this.strokeColor,
       this.radius = 24,
       this.fit = BoxFit.cover,
@@ -27,12 +27,12 @@ class CircularImage extends StatelessWidget {
   Widget build(BuildContext context) => Container(
       decoration: BoxDecoration(
           color: context.colors.surfaceVariant.withOpacity(0.38),
-          border: Border.all(width: stroke, color: strokeColor ?? context.colors.outline),
+          border: Border.all(width: stroke ?? radius / 12, color: strokeColor ?? context.colors.outlineVariant),
           shape: BoxShape.circle),
       alignment: Alignment.center,
       child: GestureDetector(
-        onTap: () =>preview? showImage(context):false,
-        child: ClipOval(
+        onTap: () => preview ? showImage(context) : false,
+        child: ClipOval(clipBehavior: Clip.antiAliasWithSaveLayer,
             child: image == null || '$image'.isEmpty
                 ? _placeholder(context)
                 : CachedNetworkImage(

@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import '../../const/theme.dart';
 
 extension ContextExtension on BuildContext {
-  TextTheme get styles => Theme.of(this).textTheme;
+  ThemeData get theme => Theme.of(this);
 
-  ColorScheme get colors => Theme.of(this).colorScheme;
+  TextTheme get styles => theme.textTheme;
 
-  CustomColors get customColors => Theme.of(this).extension<CustomColors>()!;
+  ColorScheme get colors => theme.colorScheme;
 
-  bool get dark => Theme.of(this).brightness == Brightness.dark;
+  CustomColors get customColors => theme.extension<CustomColors>()!;
+
+  bool get dark => theme.brightness == Brightness.dark;
 
   void hideSnackBar() => ScaffoldMessenger.of(this).hideCurrentSnackBar();
 

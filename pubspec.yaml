@@ -20,6 +20,7 @@ dependencies:
   firebase_auth: ^4.17.0
   material_symbols_icons: ^4.2718.0
   firebase_core: ^2.25.2
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:
