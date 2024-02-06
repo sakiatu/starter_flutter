@@ -75,6 +75,24 @@ change app logo and icon
   https://pub.dev/packages/flutter_launcher_icons
  ```
 
+add fonts
+> download a variable [Font Family](https://fonts.google.com/?vfonly=true&preview.text=thisisafontiwassearchingformywholelife)
+
+> copy .ttf files to `/fonts` 
+
+> add font info in `pubspec.yaml` fonts section
+
+> add font in `lib/const/theme.dart`
+
+ ```
+ class MyFont {
+  MyFont._();
+
+  static const font1 = 'FontFamilyName';
+  static const font2 = 'FontFamilyName';
+}
+ ```
+
 change base url
  ```
  where: lib/const/config.dart
