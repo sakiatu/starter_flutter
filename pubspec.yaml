@@ -21,11 +21,26 @@ dependencies:
   material_symbols_icons: ^4.2718.0
   firebase_core: ^2.25.2
   cached_network_image: ^3.3.1
+  url_launcher: ^6.2.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.3.10
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  color_dark: "#000000"
+  image: assets/image/logo_640.png
+  android_12:
+    image: assets/image/logo_1152.png
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/image/app_icon_640.png"
 
 flutter:
   uses-material-design: true
@@ -45,3 +60,6 @@ flutter:
        - asset: assets/font/RobotoCondensed/regular.ttf
        - asset: assets/font/RobotoCondensed/italic.ttf
          style: italic
+
+
+

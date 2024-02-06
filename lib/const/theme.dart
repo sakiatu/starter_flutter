@@ -6,40 +6,28 @@ import 'package:flutter/material.dart';
 class MyFont {
   MyFont._();
 
-  static const primary = 'Manrope';
-  static const secondary = 'Inter';
+  static const primary = 'RobotoCondensed';
+  static const secondary = 'RobotoCondensed';
+  static const handwriting = 'ShantellSans';
 }
 
 class MyTheme {
   MyTheme._();
 
   static const seedBrand = Color(0XFF8E4585);
-  static const seedWarning = Color(0xFFD00030);
-  static const seedProxy = Color(0xFFAF7BFF);
 
-  static ThemeData get lightTheme => ThemeData(
+  static ThemeData get(bool dark) => ThemeData(
       useMaterial3: true,
       fontFamily: MyFont.primary,
-      colorScheme: ColorScheme.fromSeed(seedColor: seedBrand),
-      textTheme: textTheme,
-      iconTheme: iconTheme,
-      navigationDrawerTheme: navigationDrawerTheme,
-      chipTheme: chipTheme,
-      appBarTheme: appbarTheme,
-      extensions: const [lightCustomColors]);
+      colorScheme: ColorScheme.fromSeed(seedColor: seedBrand, brightness: dark ? Brightness.dark : Brightness.light),
+      textTheme: _textTheme,
+      iconTheme: _iconTheme,
+      navigationDrawerTheme: _navigationDrawerTheme,
+      chipTheme: _chipTheme,
+      appBarTheme: _appbarTheme,
+      extensions: [dark ? _darkCustomColors : _lightCustomColors]);
 
-  static ThemeData get darkTheme => ThemeData(
-      useMaterial3: true,
-      fontFamily: MyFont.primary,
-      colorScheme: ColorScheme.fromSeed(seedColor: seedBrand, brightness: Brightness.dark),
-      textTheme: textTheme,
-      iconTheme: iconTheme,
-      navigationDrawerTheme: navigationDrawerTheme,
-      chipTheme: chipTheme,
-      appBarTheme: appbarTheme,
-      extensions: const [darkCustomColors]);
-
-  static get textTheme => const TextTheme(
+  static get _textTheme => const TextTheme(
       displayLarge: TextStyle(
           fontSize: 57, fontFamily: MyFont.primary, fontVariations: [FontVariation.weight(600)], height: 1.12),
       displayMedium: TextStyle(
@@ -95,15 +83,15 @@ class MyTheme {
           height: 1.45,
           letterSpacing: 0));
 
-  static get iconTheme => const IconThemeData(fill: 0, weight: 400, opticalSize: 24);
+  static get _iconTheme => const IconThemeData(fill: 0, weight: 400, opticalSize: 24);
 
-  static get navigationDrawerTheme => const NavigationDrawerThemeData(tileHeight: 48);
+  static get _navigationDrawerTheme => const NavigationDrawerThemeData(tileHeight: 48);
 
-  static get chipTheme => const ChipThemeData(padding: EdgeInsets.symmetric(horizontal: 4));
+  static get _chipTheme => const ChipThemeData(padding: EdgeInsets.symmetric(horizontal: 4));
 
-  static get appbarTheme => const AppBarTheme(titleSpacing: 0);
+  static get _appbarTheme => const AppBarTheme(titleSpacing: 0);
 
-  static const lightCustomColors = CustomColors(
+  static const _lightCustomColors = CustomColors(
     surfaceContainerHighest: Color(0xFFE3E2E6),
     surfaceContainerHigh: Color(0xFFE8E8EB),
     surfaceContainer: Color(0xFFEEEDF1),
@@ -121,7 +109,7 @@ class MyTheme {
     onProxyContainer: Color(0xFF280056),
   );
 
-  static const darkCustomColors = CustomColors(
+  static const _darkCustomColors = CustomColors(
     surfaceContainerHighest: Color(0xFF333538),
     surfaceContainerHigh: Color(0xFF292A2D),
     surfaceContainer: Color(0xFF1E2022),

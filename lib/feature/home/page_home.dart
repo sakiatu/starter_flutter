@@ -4,6 +4,7 @@ import 'package:starter/component/card.dart';
 import 'package:starter/component/circular_image.dart';
 import 'package:starter/component/text.dart';
 import 'package:starter/component/text_field.dart';
+import 'package:starter/const/image.dart';
 
 import '../../component/button.dart';
 import '../../component/gap_xy.dart';
@@ -25,16 +26,9 @@ class HomePage extends GetView<ThemeController> {
       appBar: AppBar(title: const Text('Home'), actions: actions(context)),
       body: ListView(children: [
         const GapY(),
-        if(false)
-        Row(mainAxisAlignment:MainAxisAlignment.center,children: [
-          _loader(),
-          _loader(),
-          _loaderDanger(),
-          _customLoader(),
-          _customLoader(),
-          _customLoader(),
-        ]).paddingX(),
-        const GapY(),
+        Image.asset(MyImage.logo, width: 100, height: 100).paddingY(),
+        Image.asset(MyImage.update, height: context.height*.4).paddingY(),
+        Image.asset(MyImage.maintenance, height: context.height*.4).paddingY(),
         _button(context),
         _buttonDanger(context),
         _buttonTonal(context),
@@ -44,7 +38,6 @@ class HomePage extends GetView<ThemeController> {
         _textField(context),
         _card(),
         _circularImage(),
-
         const GapY()
       ]).paddingX());
 

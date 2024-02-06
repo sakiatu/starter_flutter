@@ -1,8 +1,9 @@
 class MyString {
+
   MyString._();
 
   //App
-  static const appName = 'Flutter Starter';
+  static const appName = 'Starter';
 
   //Api
   static const noError = 'No Error';
@@ -11,4 +12,8 @@ class MyString {
   static const sourceCache = 'Cache';
   static const sourceNetwork = 'Network';
   static const sourceUnknown = 'Unknown';
+
+  //update
+  static const updateApp = 'Please update your app to access the latest features';
+  static const updateButton = 'Tap here to Update Now';
 }

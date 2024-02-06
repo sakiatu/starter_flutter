@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:starter/feature/config/page_config.dart';
+import 'package:starter/feature/update/page_update.dart';
 import 'feature/theme/controller_theme.dart';
 
 import 'const/string.dart';
@@ -22,14 +24,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ThemeController>(
-        builder: (controller) => MaterialApp(
+        builder: (themeController) => MaterialApp(
               debugShowCheckedModeBanner: false,
               title: MyString.appName,
-              themeMode: controller.darkMode.value ? ThemeMode.dark : ThemeMode.light,
-              theme: MyTheme.lightTheme,
-              darkTheme: MyTheme.darkTheme,
-              home: HomePage(),
-              // home: FirebaseAuth.instance.currentUser != null ? const Homepage() : const PhonePage(),
+              theme: MyTheme.get(themeController.darkMode.value),
+              home: HomePage()
             ));
   }
 }

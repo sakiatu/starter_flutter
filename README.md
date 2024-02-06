@@ -71,14 +71,24 @@ change app name
  ```
 
 change app logo and icon
- ```
-  https://pub.dev/packages/flutter_launcher_icons
- ```
+> change `assets/image/app_icon_640.png` for launcher_icon(640x640)
+```
+dart run flutter_launcher_icons
+```
+> change `assets/image/logo_640.png` for less than android 12 logo(640x640)
 
+> change `assets/image/logo_1152.png` for android 12 or greater logo(1152x1152)
+```
+dart run flutter_native_splash:create
+```
+>Note: `launcher icon -> solid bg`  `logo_640 and logo_1152 -> circular transparent, inner padding`
+
+> Full Doc: [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons) and [flutter_native_splash](https://pub.dev/packages/flutter_native_splash) 
+> 
 add fonts
 > download a variable [Font Family](https://fonts.google.com/?vfonly=true&preview.text=thisisafontiwassearchingformywholelife)
 
-> copy .ttf files to `/fonts` 
+> copy .ttf files to `/assets/font` 
 
 > add font info in `pubspec.yaml` fonts section
 

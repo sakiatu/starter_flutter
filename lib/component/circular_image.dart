@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:starter/const/icon.dart';
+import '../const/icon.dart';
 
 import '../helper/extension/ext_context.dart';
 
