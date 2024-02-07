@@ -9,4 +9,8 @@ class MyIcon {
   //image
   static const placeholder = Symbols.spa;
 
+  //error
+  static const error = Symbols.error;
+  static const wifiOff = Symbols.wifi_off;
+
 }

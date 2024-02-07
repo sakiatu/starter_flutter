@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class MyTextField extends TextField {
@@ -27,7 +29,7 @@ class MyTextField extends TextField {
             alignLabelWithHint: true,
             labelText: label,
             hintText: hint,
-            hintStyle: const TextStyle(fontWeight: FontWeight.normal),
+            hintStyle:  const TextStyle(fontVariations: [FontVariation.weight(450)]),
             prefixIcon: icon == null ? null : Icon(icon),
             suffix: suffix,
           ),

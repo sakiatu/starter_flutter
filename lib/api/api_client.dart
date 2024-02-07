@@ -13,7 +13,7 @@ class ApiClient extends GetxService {
   final LocalDb _localDb;
   final FirebaseAuth _auth;
 
-  ApiClient(this._baseUrl, this._localDb,this._auth);
+  ApiClient(this._baseUrl, this._localDb, this._auth);
 
   //Query
   Future<Result> query(
@@ -63,6 +63,7 @@ class ApiClient extends GetxService {
 
   Map<String, String> get _headers => {
         'content-type': 'application/json; charset=UTF-8',
+        if (_authToken == null) 'x-hasura-role': 'guest',
         if (_authToken != null) ...{'x-hasura-role': 'teacher', 'Authorization': 'Bearer $_authToken'}
       };
 

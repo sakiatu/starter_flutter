@@ -27,8 +27,6 @@ class HomePage extends GetView<ThemeController> {
       body: ListView(children: [
         const GapY(),
         Image.asset(MyImage.logo, width: 100, height: 100).paddingY(),
-        Image.asset(MyImage.update, height: context.height*.4).paddingY(),
-        Image.asset(MyImage.maintenance, height: context.height*.4).paddingY(),
         _button(context),
         _buttonDanger(context),
         _buttonTonal(context),

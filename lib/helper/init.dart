@@ -1,12 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:starter/feature/config/controller_config.dart';
-import 'package:starter/feature/config/service_config.dart';
-import 'package:starter/feature/update/controller_update.dart';
+import '../feature/config/controller_config.dart';
+import '../feature/config/service_config.dart';
+import '../feature/update/controller_update.dart';
 
 import '../api/api_client.dart';
 import '../const/config.dart';
+import '../feature/auth/controller_auth.dart';
+import '../feature/auth/service_auth.dart';
 import '../feature/theme/controller_theme.dart';
 import 'local_db.dart';
 
@@ -23,9 +25,11 @@ Future<void> init() async {
 
   //Controllers
   Get.lazyPut(() => ConfigController(Get.find()));
+  Get.lazyPut(() => AuthController(Get.find()));
   Get.lazyPut(() => ThemeController(localDb));
   Get.lazyPut(() => UpdateController());
 
   //Services
   Get.lazyPut(() => ConfigService(Get.find()));
+  Get.lazyPut(() => AuthService(Get.find()));
 }

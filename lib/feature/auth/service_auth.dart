@@ -6,10 +6,10 @@ import 'package:starter/api/enum_error.dart';
 
 import '../../api/api_client.dart';
 
-class ConfigService extends GetxService {
+class AuthService extends GetxService {
   final ApiClient _client;
 
-  ConfigService(this._client);
+  AuthService(this._client);
 
   StreamSubscription listenConfig(void Function(Map map, ErrorType? erorr) snap) {
     Map cacheData = {};
