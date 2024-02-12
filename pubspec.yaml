@@ -15,14 +15,13 @@ dependencies:
   intl: ^0.19.0
   shared_preferences: ^2.2.2
   graphql_flutter: ^5.1.2
-  jwt_decoder: ^2.0.1
   get: ^4.6.6
   firebase_auth: ^4.17.0
   material_symbols_icons: ^4.2718.0
   firebase_core: ^2.25.2
   cached_network_image: ^3.3.1
   url_launcher: ^6.2.4
-  connectivity_plus: ^3.0.6
+  connectivity_plus: ^5.0.2
 
 dev_dependencies:
   flutter_test:

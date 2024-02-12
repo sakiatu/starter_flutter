@@ -27,12 +27,11 @@ class HomePage extends GetView<ThemeController> {
       body: ListView(children: [
         const GapY(),
         Image.asset(MyImage.logo, width: 100, height: 100).paddingY(),
-        _button(context),
-        _buttonDanger(context),
-        _buttonTonal(context),
-        _buttonDangerTonal(context),
-        _buttonText(context),
-        _buttonDangerText(context),
+        Row(children: [_button(context).expand(), const GapX(), _buttonDanger(context).expand()]).paddingBottom(),
+        Row(children: [_buttonDangerTonal(context).expand(), const GapX(), _buttonTonal(context).expand()])
+            .paddingBottom(),
+        Row(children: [_buttonText(context).expand(), const GapX(), _buttonDangerText(context).expand()])
+            .paddingBottom(),
         _textField(context),
         _card(),
         _circularImage(),
@@ -46,27 +45,26 @@ class HomePage extends GetView<ThemeController> {
   Widget _loaderDanger() => const Loader(danger: true).paddingRight();
 
   Widget _button(BuildContext context) =>
-      MyButton(title: 'My Button', onClick: () => context.showSuccess('Clicked!')).paddingBottom();
+      MyButton.outlined(title: 'My Button', disabled: false, onClick: () => context.showSuccess('Clicked!'));
 
   Widget _buttonDanger(BuildContext context) =>
-      MyButton.danger(title: 'My Danger Button', onClick: () => context.showError('Clicked!')).paddingBottom();
+      MyButton.danger(title: 'My Danger Button', onClick: () => context.showError('Clicked!'));
 
   Widget _buttonTonal(BuildContext context) =>
-      MyButton.tonal(title: 'My Tonal Button', onClick: () => context.showSuccess('Clicked!')).paddingBottom();
+      MyButton.tonal(title: 'My Tonal Button', onClick: () => context.showSuccess('Clicked!'));
 
   Widget _buttonDangerTonal(BuildContext context) =>
-      MyButton.dangerTonal(title: 'My Danger Tonal Button', onClick: () => context.showError('Clicked!'))
-          .paddingBottom();
+      MyButton.dangerTonal(title: 'Danger Tonal Button', onClick: () => context.showError('Clicked!'));
 
   Widget _buttonText(BuildContext context) =>
-      MyButton.text(title: 'My Text Button', onClick: () => context.showSuccess('Clicked!')).paddingBottom();
+      MyButton.text(title: 'My Text Button', onClick: () => context.showSuccess('Clicked!'));
 
   Widget _buttonDangerText(BuildContext context) =>
-      MyButton.dangerText(title: 'My Text Button', onClick: () => context.showError('Clicked!')).paddingBottom();
+      MyButton.dangerText(title: 'My Text Button', onClick: () => context.showError('Clicked!'));
 
-  Widget _textField(BuildContext context) =>
-      MyTextField(hint: "hint text", label: "label text",disabled: true, icon: Icons.podcasts, minLines: 1, maxLines: 10)
-          .paddingBottom();
+  Widget _textField(BuildContext context) => MyTextField(
+          hint: "hint text", label: "label text", disabled: true, icon: Icons.podcasts, minLines: 1, maxLines: 10)
+      .paddingBottom();
 
   Widget _card() => MyCard(
           child: const MyText(

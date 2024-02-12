@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'dart:io' show Platform;
 
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:starter/const/config.dart';
 
-import '../../api/enum_error.dart';
 import 'service_config.dart';
 
 class ConfigController extends GetxController implements GetxService {
@@ -13,7 +11,7 @@ class ConfigController extends GetxController implements GetxService {
   final updateMode = false.obs;
   final maintenanceMode = false.obs;
   final authenticated = false.obs;
-  final error = Rxn<ErrorType>();
+  final error = Rxn<String>();
   String appLink = '';
   StreamSubscription? _subscription;
 
@@ -39,15 +37,14 @@ class ConfigController extends GetxController implements GetxService {
 
     try {
       _subscription?.cancel();
-      _subscription = _service.listenConfig((data, error) {
+      _subscription = _service.listenConfig((data) {
         updateMode.value = _needUpdate(data);
         maintenanceMode.value = _maintenanceMode(data);
         loading.value = false;
-        this.error.value = error;
         update();
       });
     } catch (e) {
-      error.value = ErrorType.somethingWentWrong;
+      error.value = e.toString();
       update();
     }
   }
@@ -58,8 +55,7 @@ class ConfigController extends GetxController implements GetxService {
     if (Platform.isAndroid) {
       minimum = double.tryParse(data['minimum_android_version'] ?? '0') ?? 0;
       appLink = data['android_link'] ?? '';
-    }
-    else if (Platform.isIOS) {
+    } else if (Platform.isIOS) {
       minimum = double.tryParse(data['minimum_ios_version'] ?? '0') ?? 0;
       appLink = data['ios_link'] ?? '';
     }

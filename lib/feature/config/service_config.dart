@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:starter/api/enum_error.dart';
 
 import '../../api/api_client.dart';
 
@@ -11,7 +10,7 @@ class ConfigService extends GetxService {
 
   ConfigService(this._client);
 
-  StreamSubscription listenConfig(void Function(Map map, ErrorType? erorr) snap) {
+  StreamSubscription listenConfig(void Function(Map map) snap) {
     Map cacheData = {};
     return _client.subscription(
       query: r'''
@@ -26,10 +25,10 @@ class ConfigService extends GetxService {
         final data = {for (var item in res.data['config'] ?? []) item['key']: item['value']};
 
         if (res.cacheError) return;
-        if (res.hasError) return snap(cacheData, ErrorType.somethingWentWrong);
+        if (res.hasError) throw res.error!;
 
         if (res.cache || res.network && !mapEquals(cacheData, data)) {
-          snap(data, null);
+          snap(data);
           cacheData = {...data};
         }
       },

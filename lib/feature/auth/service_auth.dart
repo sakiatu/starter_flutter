@@ -1,38 +1,21 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:starter/api/enum_error.dart';
 
 import '../../api/api_client.dart';
+import '../../helper/local_db.dart';
 
 class AuthService extends GetxService {
   final ApiClient _client;
+  final LocalDb _localDb;
 
-  AuthService(this._client);
+  AuthService(this._client, this._localDb);
 
-  StreamSubscription listenConfig(void Function(Map map, ErrorType? erorr) snap) {
-    Map cacheData = {};
-    return _client.subscription(
-      query: r'''
-        subscription {
-          config {
-            key
-            value
-          }
-        }
-      ''',
-      snap: (res) {
-        final data = {for (var item in res.data['config'] ?? []) item['key']: item['value']};
-
-        if (res.cacheError) return;
-        if (res.hasError) return snap(cacheData, ErrorType.somethingWentWrong);
-
-        if (res.cache || res.network && !mapEquals(cacheData, data)) {
-          snap(data, null);
-          cacheData = {...data};
-        }
-      },
-    );
+  StreamSubscription listenAuthState(void Function(bool authenticated) snap) {
+    return FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (user == null) _localDb.clearAll();
+      snap(user != null);
+    });
   }
 }

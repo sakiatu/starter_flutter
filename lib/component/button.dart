@@ -4,7 +4,7 @@ import '../helper/extension/ext_context.dart';
 import '../helper/extension/ext_widget.dart';
 import 'loader.dart';
 
-enum _ButtonType { normal, tonal, text, danger, dangerTonal, dangerText }
+enum _ButtonType { normal, tonal, text, outlined, danger, dangerTonal, dangerText, dangerOutlined }
 
 class MyButton extends FilledButton {
   final _ButtonType _type;
@@ -41,6 +41,17 @@ class MyButton extends FilledButton {
         super.tonal(
             child: loading ? _loader() : _foreground(title, icon), onPressed: disabled || loading ? null : onClick);
 
+  MyButton.outlined({
+    super.key,
+    required String title,
+    IconData? icon,
+    required VoidCallback? onClick,
+    bool loading = false,
+    bool disabled = false,
+  })  : _type = _ButtonType.outlined,
+        super.tonal(
+            child: loading ? _loader() : _foreground(title, icon), onPressed: disabled || loading ? null : onClick);
+
   MyButton.danger({
     super.key,
     required String title,
@@ -74,6 +85,17 @@ class MyButton extends FilledButton {
         super.tonal(
             child: loading ? _loader(true) : _foreground(title, icon), onPressed: disabled || loading ? null : onClick);
 
+  MyButton.dangerOutlined({
+    super.key,
+    required String title,
+    IconData? icon,
+    required VoidCallback? onClick,
+    bool loading = false,
+    bool disabled = false,
+  })  : _type = _ButtonType.dangerOutlined,
+        super.tonal(
+            child: loading ? _loader(true) : _foreground(title, icon), onPressed: disabled || loading ? null : onClick);
+
   static Widget _loader([bool danger = false]) => Loader(size: 24, stroke: 2.5, danger: danger);
 
   static Widget _foreground(String text, IconData? icon) => Row(
@@ -83,10 +105,12 @@ class MyButton extends FilledButton {
 
   @override
   ButtonStyle defaultStyleOf(BuildContext context) {
-    final style =
-        super.defaultStyleOf(context).copyWith(minimumSize: MaterialStateProperty.all(const Size.fromHeight(48)));
+    final style = super
+        .defaultStyleOf(context)
+        .copyWith(minimumSize: MaterialStateProperty.all(const Size.fromHeight(48)));
     final disableForeground = context.colors.onSurface.withOpacity(0.38);
     final disableBackground = context.colors.onSurface.withOpacity(0.12);
+    const outlinedBorderWidth = 1.5;
 
     return switch (_type) {
       _ButtonType.normal || _ButtonType.tonal => style,
@@ -94,6 +118,13 @@ class MyButton extends FilledButton {
           foregroundColor: MaterialStateProperty.resolveWith(
               (states) => states.contains(MaterialState.disabled) ? disableForeground : context.colors.primary),
           backgroundColor: MaterialStateProperty.all(Colors.transparent)),
+      _ButtonType.outlined => style.copyWith(
+          foregroundColor: MaterialStateProperty.resolveWith(
+              (states) => states.contains(MaterialState.disabled) ? disableForeground : context.colors.primary),
+          backgroundColor: MaterialStateProperty.all(Colors.transparent),
+          side: MaterialStateProperty.resolveWith((states) => BorderSide(
+              color: states.contains(MaterialState.disabled) ? disableForeground : context.colors.primary,
+              width: outlinedBorderWidth))),
       _ButtonType.danger => style.copyWith(
           foregroundColor: MaterialStateProperty.resolveWith(
               (states) => states.contains(MaterialState.disabled) ? disableForeground : context.colors.onError),
@@ -108,6 +139,13 @@ class MyButton extends FilledButton {
           foregroundColor: MaterialStateProperty.resolveWith(
               (states) => states.contains(MaterialState.disabled) ? disableForeground : context.colors.error),
           backgroundColor: MaterialStateProperty.all(Colors.transparent)),
+      _ButtonType.dangerOutlined => style.copyWith(
+          foregroundColor: MaterialStateProperty.resolveWith(
+              (states) => states.contains(MaterialState.disabled) ? disableForeground : context.colors.error),
+          backgroundColor: MaterialStateProperty.all(Colors.transparent),
+          side: MaterialStateProperty.resolveWith((states) => BorderSide(
+              color: states.contains(MaterialState.disabled) ? disableForeground : context.colors.error,
+              width: outlinedBorderWidth)))
     };
   }
 }

@@ -13,18 +13,23 @@ class LocalDb {
 
   //keys
   static const _token = "authToken";
+  static const _tokenExp = "authTokenExp";
   static const _userId = "userId";
   static const _darkMode = "darkMode";
 
   //getter
   String? get token => _db.getString(_token);
 
+  int get tokenExp => _db.getInt(_token)??0;
+
   String? get userId => _db.getString(_userId);
 
-  bool get darkMode => _db.getBool(_darkMode)?? false;
+  bool get darkMode => _db.getBool(_darkMode) ?? false;
 
   //setter
   Future<void> saveToken(String? value) async => _save(_token, value);
+
+  Future<void> saveTokenExp(int? value) async => _save(_tokenExp, value);
 
   Future<void> saveUserId(String? value) async => await _save(_userId, value);
 

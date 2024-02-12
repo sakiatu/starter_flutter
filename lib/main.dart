@@ -40,11 +40,12 @@ class MyApp extends StatelessWidget {
 
   Widget _getHome(ConfigController config, AuthController auth) {
     if (config.loading.value) return const LoaderPage();
-    if (config.error.value != null) return ErrorPage(config.error.value!, action: config.loadData);
+    if (config.error.value != null) return ErrorPage(action: config.loadData);
     if (config.updateMode.value) return UpdatePage(config.appLink);
     if (config.maintenanceMode.value) return const MaintenancePage();
     if (auth.authenticated.value) return HomePage();
 
-    return const AuthPage();
+    // return const AuthPage();
+    return HomePage();
   }
 }
