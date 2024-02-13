@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:starter/const/string.dart';
+import '../const/string.dart';
 
 class Result {
   final Map<String, dynamic> data;
