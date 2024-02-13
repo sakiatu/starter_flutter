@@ -41,6 +41,7 @@ class Result {
           network: $network, 
           cacheError: $cacheError, 
           networkError: $networkError, 
+          source: $source,
           error: $error
         )''';
 }

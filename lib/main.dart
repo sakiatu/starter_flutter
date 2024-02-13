@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
                 builder: (auth) => MaterialApp(
                     debugShowCheckedModeBanner: false,
                     title: MyString.appName,
-                    theme: MyTheme.get(theme.darkMode.value),
+                    theme: MyTheme.get(theme.darkMode),
                     home: _getHome(config, auth)))));
   }
 

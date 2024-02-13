@@ -14,12 +14,13 @@ import '../../helper/extension/ext_widget.dart';
 import '../theme/controller_theme.dart';
 
 class HomePage extends GetView<ThemeController> {
-  final l = false.obs;
+  List<Widget> actions(BuildContext context) => [
+        IconButton(
+            icon: context.dark ? const Icon(Icons.light_mode) : const Icon(Icons.dark_mode),
+            onPressed: controller.toggleTheme)
+      ];
 
-  List<Widget> actions(BuildContext context) =>
-      [IconButton(icon: const Icon(Icons.light_mode), onPressed: controller.toggleTheme)];
-
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) => Scaffold(
