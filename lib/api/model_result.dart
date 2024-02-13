@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+
 import '../const/string.dart';
 
 class Result {
@@ -9,6 +10,7 @@ class Result {
   final bool network;
   final bool cacheError;
   final bool networkError;
+  final String source;
   final String? error;
 
   Result(QueryResult result)
@@ -18,6 +20,11 @@ class Result {
         network = result.source == QueryResultSource.network,
         cacheError = result.hasException && result.source == QueryResultSource.cache,
         networkError = result.hasException && result.source == QueryResultSource.network,
+        source = switch (result.source) {
+          QueryResultSource.cache => MyString.sourceCache,
+          QueryResultSource.network => MyString.sourceNetwork,
+          _ => MyString.sourceUnknown
+        },
         error = !result.hasException
             ? null
             : kDebugMode
@@ -27,8 +34,7 @@ class Result {
                     : MyString.error;
 
   @override
-  String toString() =>
-      '''Result(
+  String toString() => '''Result(
           data: $data, 
           hasError: $hasError, 
           cache: $cache, 
