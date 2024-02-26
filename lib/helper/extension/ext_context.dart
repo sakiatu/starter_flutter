@@ -21,6 +21,7 @@ extension ContextExtension on BuildContext {
 
   void showSnackBar(String msg, Color text, Color bg) => ScaffoldMessenger.of(this).showSnackBar(SnackBar(
       content: Text(msg, style: styles.labelLarge?.copyWith(color: text)),
+      behavior: SnackBarBehavior.floating,
       backgroundColor: bg,
       duration: const Duration(milliseconds: 2000)));
 
