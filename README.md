@@ -117,12 +117,12 @@ customize theme
 
 use local database
  ```
- where: lib/helper/local_db.dart
+ where: lib/util/local_db.dart
  how: write key, setter, getter
  ```
 
 initialization & GetX dependency injection
  ```
- where: lib/helper/init.dart
+ where: lib/util/init.dart
  how: init module, put getx controller and service
  ```
