@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:starter/feature/config/presentation/view/config_page.dart';
 import 'package:starter/feature/theme/theme_cubit.dart';
 import '../../core/extension/context.dart';
 
@@ -19,8 +20,8 @@ class HomePage extends StatelessWidget {
             })
         ],
       ),
-      body: const Center(
-        child: Text('Home Page'),
+      body: Center(
+        child: TextButton(child: Text('Config Page'),onPressed:()=> context.to(ConfigView())),
       ),
     );
   }
