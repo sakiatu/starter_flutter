@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'update_page.dart';
-import '../../../../init.dart';
 
+import '../../../../init.dart';
 import '../bloc/config_bloc.dart';
-import 'maintenance_page.dart';
+import 'maintenance_view.dart';
+import 'update_view.dart';
 
 class ConfigView extends StatelessWidget {
   const ConfigView({super.key});
@@ -16,12 +16,16 @@ class ConfigView extends StatelessWidget {
           create: (context) => getIt<ConfigBloc>()..add(ConfigGet()),
           child: BlocBuilder<ConfigBloc, ConfigState>(
             builder: (context, state) {
-              return switch (state.runtimeType) {
-                ConfigLoading => const CircularProgressIndicator(),
-                ConfigUpdateMode => const UpdateView(),
-                ConfigMaintenanceMode => const MaintenanceView(),
-                _ => const Text('No Mode'),
-              };
+              if (state is ConfigLoading) {
+                return const CircularProgressIndicator();
+              } else if (state is ConfigUpdateMode) {
+                return UpdateView(
+                    onUpdateButtonClick: () => context.read<ConfigBloc>().add(ConfigUpdateButtonClick(state.appUrl)));
+              } else if (state is ConfigMaintenanceMode) {
+                return const MaintenanceView();
+              } else {
+                return const Text('No Mode');
+              }
             },
           ),
         ),

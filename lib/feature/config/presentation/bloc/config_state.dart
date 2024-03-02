@@ -4,7 +4,10 @@ part of 'config_bloc.dart';
 abstract class ConfigState {}
 
 class ConfigLoading extends ConfigState {}
-class ConfigUpdateMode extends ConfigState {}
+class ConfigUpdateMode extends ConfigState {
+  final String appUrl;
+  ConfigUpdateMode(this.appUrl);
+}
 class ConfigMaintenanceMode extends ConfigState {}
 class ConfigNoMode extends ConfigState {}
 

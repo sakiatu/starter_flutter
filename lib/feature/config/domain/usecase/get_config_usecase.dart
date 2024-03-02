@@ -1,9 +1,6 @@
-import 'package:starter/core/util/typedef.dart';
-import 'package:starter/feature/config/data/model/config_model.dart';
-import 'package:starter/feature/config/domain/entity/config_entity.dart';
-
 import '../../../../core/usecase/usecase.dart';
-
+import '../../../../core/util/typedef.dart';
+import '../entity/config_entity.dart';
 import '../param/get_config_param.dart';
 import '../repository/config_repo.dart';
 
